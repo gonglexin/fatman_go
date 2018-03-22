@@ -1,4 +1,5 @@
 # FatmanGo
+![snake_zhangjiajie](https://github.com/gonglexin/fatman_go/raw/master/assets/static/images/snake_zhangjiajie.gif)
 
 To start your Phoenix server:
 
