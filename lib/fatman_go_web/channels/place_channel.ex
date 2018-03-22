@@ -4,12 +4,12 @@ defmodule FatmanGoWeb.PlaceChannel do
   alias FatmanGo.Place
 
   def join("places:lobby", _payload, socket) do
-    send(self, :after_join)
+    send(self(), :after_join)
     {:ok, socket}
   end
 
   def handle_info(:after_join, socket) do
-    with {:ok, file}          <- File.read("priv/places.json"),
+    with {:ok, file}          <- File.read(Path.join(:code.priv_dir(:fatman_go), "places.json")),
          {:ok, place_structs} <- Poison.Parser.parse(file, keys: :atoms),
          places               <- Enum.map(place_structs, &struct(Place, &1)),
          stream               <- Stream.cycle(places),
