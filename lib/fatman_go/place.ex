@@ -1,4 +1,4 @@
 defmodule FatmanGo.Place do
-  @derive [Poison.Encoder]
+  @derive Jason.Encoder
   defstruct [:lat, :lon, :last_update]
 end

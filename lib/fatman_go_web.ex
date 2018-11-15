@@ -21,7 +21,7 @@ defmodule FatmanGoWeb do
     quote do
       use Phoenix.Controller, namespace: FatmanGoWeb
       import Plug.Conn
-      import FatmanGoWeb.Router.Helpers
+      alias FatmanGoWeb.Router.Helpers, as: Routes
       import FatmanGoWeb.Gettext
     end
   end

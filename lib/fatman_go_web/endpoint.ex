@@ -1,7 +1,8 @@
 defmodule FatmanGoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :fatman_go
 
-  socket "/socket", FatmanGoWeb.UserSocket
+  socket "/socket", FatmanGoWeb.UserSocket,
+    websoket: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -24,7 +25,7 @@ defmodule FatmanGoWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head
