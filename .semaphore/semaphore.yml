@@ -6,58 +6,36 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "Build"
+  - name: "Install dependencies"
     task:
       env_vars:
-        - name: APP_ENV
-          value: prod
+        - name: MIX_ENV
+          value: test
       jobs:
-      - name: Docker build
+      - name: mix and cache
         commands:
           - checkout
-          - ls -1
-          - echo $APP_ENV
-          - echo "Docker build..."
-          - echo "done"
+	  # Be sure to use --force to skip confirmation prompts
+          - mix local.hex --force
+          - mix local.rebar --force
+          - cache restore mix-deps-$(checksum mix.lock)
+          - cache restore mix-build-$(checksum mix.lock)
+          - mix do deps.get, compile
+          - cache store mix-deps-$(checksum mix.lock) deps
+          - cache store mix-build-$(checksum mix.lock) _build
 
-  - name: "Smoke tests"
+  - name: "Tests"
     task:
+      env_vars:
+        - name: MIX_ENV
+          value: test
+      prologue:
+        commands:
+          - checkout
+          # Restore dependencies and compiled code
+          - cache restore mix-deps-$(checksum mix.lock)
+          - cache restore mix-build-$(checksum mix.lock)
       jobs:
-      - name: Smoke
-        commands:
-          - checkout
-          - echo "make smoke"
-
-  - name: "Unit tests"
-    task:
-      jobs:
-      - name: RSpec
-        commands:
-          - checkout
-          - echo "make rspec"
-
-      - name: Lint code
-        commands:
-          - checkout
-          - echo "make lint"
-
-      - name: Check security
-        commands:
-          - checkout
-          - echo "make security"
-
-  - name: "Integration tests"
-    task:
-      jobs:
-      - name: Cucumber
-        commands:
-          - checkout
-          - echo "make cucumber"
-
-  - name: "Push Image"
-    task:
-      jobs:
-      - name: Push
-        commands:
-          - checkout
-          - echo "make docker.push"
+        - name: Everything
+          commands:
+            - mix test
