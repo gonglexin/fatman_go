@@ -24,7 +24,7 @@ RUN \
   apt-get -f -y install && \
   dpkg -i esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \  
   rm esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \
-  dpkg -i elixir_1.7.4-1~ubuntu~bionic_amd64.deb && \
+  dpkg -i elixir_1.7.3-1~ubuntu~bionic_amd64.deb && \
   rm elixir_1.7.3-1~ubuntu~bionic_amd64.deb && \
 
 CMD ["/bin/bash"]
