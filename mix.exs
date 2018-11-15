@@ -40,7 +40,7 @@ defmodule FatmanGo.Mixfile do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:distillery, "~> 2.0", runtime: false},
-      {:observer_cli, "~> 1.3.1"}
+      {:observer_cli, "~> 1.4"}
     ]
   end
 end
