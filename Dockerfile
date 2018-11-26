@@ -14,17 +14,17 @@ WORKDIR /opt/build
 COPY docker/aliyun.sources.list /etc/apt/sources.list
 
 RUN \
-  apt-get clean &&\
+  apt-get clean && \
   apt-get update -y && \
   apt-get install -y git wget vim locales gnupg libwxbase3.0-dev libwxgtk3.0-dev libsctp1 && \
   locale-gen en_US.UTF-8 && \
-  wget https://mirrors.tuna.tsinghua.edu.cn/erlang-solutions/ubuntu/pool/esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \
-  wget https://mirrors.tuna.tsinghua.edu.cn/erlang-solutions/ubuntu/pool/elixir_1.7.3-1~ubuntu~bionic_amd64.deb && \
-  dpkg -i esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \
+  wget https://mirrors.tuna.tsinghua.edu.cn/erlang-solutions/ubuntu/pool/esl-erlang_${ERLANG_VERSION}-1~ubuntu~bionic_amd64.deb && \
+  wget https://mirrors.tuna.tsinghua.edu.cn/erlang-solutions/ubuntu/pool/elixir_${ELIXIR_VERSION}-1~ubuntu~bionic_amd64.deb && \
+  dpkg -i esl-erlang_${ERLANG_VERSION}-1~ubuntu~bionic_amd64.deb && \
   apt-get -f -y install && \
-  dpkg -i esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \  
-  rm esl-erlang_21.1-1~ubuntu~bionic_amd64.deb && \
-  dpkg -i elixir_1.7.3-1~ubuntu~bionic_amd64.deb && \
-  rm elixir_1.7.3-1~ubuntu~bionic_amd64.deb && \
+  dpkg -i esl-erlang_${ERLANG_VERSION}-1~ubuntu~bionic_amd64.deb && \
+  rm esl-erlang_${ERLANG_VERSION}-1~ubuntu~bionic_amd64.deb && \
+  dpkg -i elixir_${ELIXIR_VERSION}-1~ubuntu~bionic_amd64.deb && \
+  rm elixir_${ELIXIR_VERSION}-1~ubuntu~bionic_amd64.deb
 
 CMD ["/bin/bash"]

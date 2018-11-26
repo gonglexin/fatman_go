@@ -16,7 +16,7 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ### Build a docker image
 
 ```shell
-docker build -t elixir-ubuntu:1_7_3-otp21 .
+docker build -t elixir-ubuntu:1_7_4-otp21 .
 ```
 
 ### Build releases
@@ -26,5 +26,5 @@ docker build -t elixir-ubuntu:1_7_3-otp21 .
 build our release and output it to rel/artifacts
 
 ```shell
-docker run -v $PWD:/opt/build --rm -it elixir-ubuntu:1_7_3-otp21 /opt/build/bin/build
+docker run -v $PWD:/opt/build --rm -it elixir-ubuntu:1_7_4-otp21 /opt/build/bin/build
 ```
