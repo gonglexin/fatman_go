@@ -19,6 +19,7 @@ erl_crash.dump
 /rel
 
 /assets/node_modules
+/priv/static
 .elixir_ls
 
 # End of https://www.gitignore.io/api/phoenix
