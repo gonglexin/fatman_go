@@ -20,26 +20,28 @@ defmodule FatmanGoWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: FatmanGoWeb
+
       import Plug.Conn
-      alias FatmanGoWeb.Router.Helpers, as: Routes
       import FatmanGoWeb.Gettext
+      alias FatmanGoWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/fatman_go_web/templates",
-                        namespace: FatmanGoWeb
+      use Phoenix.View,
+        root: "lib/fatman_go_web/templates",
+        namespace: FatmanGoWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import FatmanGoWeb.Router.Helpers
       import FatmanGoWeb.ErrorHelpers
       import FatmanGoWeb.Gettext
+      alias FatmanGoWeb.Router.Helpers, as: Routes
     end
   end
 
