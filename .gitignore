@@ -14,17 +14,11 @@ erl_crash.dump
 /config/*.secret.exs
 
 /tmp
-/node_modules
 /.hex
 /.mix
 /rel
 
 /assets/node_modules
-
-/installer/_build
-/installer/tmp
-/installer/doc
-/installer/deps
-
+.elixir_ls
 
 # End of https://www.gitignore.io/api/phoenix
