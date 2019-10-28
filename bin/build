@@ -15,13 +15,16 @@ mix local.hex --if-missing --force
 
 export MIX_ENV=prod
 
+mix deps.clean --all
 # Fetch deps and compile
-mix deps.get
+mix deps.get --only prod
 # Run an explicit clean to remove any build artifacts from the host
 mix do clean, compile --force
 # Build the release
 mix release
-# Copy tarball to output
-cp "_build/prod/rel/$APP_NAME/releases/$APP_VSN/$APP_NAME.tar.gz" rel/artifacts/"$APP_NAME-$APP_VSN.tar.gz"
+
+# Make a tarball
+cd "_build/prod/rel/$APP_NAME/"
+tar cvzf /opt/build/rel/artifacts/"$APP_NAME-$APP_VSN.tar.gz" .
 
 exit 0
