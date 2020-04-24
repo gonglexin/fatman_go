@@ -1,6 +1,7 @@
 defmodule FatmanGoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :fatman_go
 
+  socket "/live", Phoenix.LiveView.Socket
   socket "/socket", FatmanGoWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -22,6 +23,10 @@ defmodule FatmanGoWeb.Endpoint do
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
+
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]

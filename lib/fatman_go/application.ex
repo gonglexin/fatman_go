@@ -8,6 +8,9 @@ defmodule FatmanGo.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
+      # Start the PubSub system
+      {Phoenix.PubSub, name: FatmanGo.PubSub},
+      FatmanGoWeb.Telemetry,
       # Start the endpoint when the application starts      
       FatmanGoWeb.Endpoint
       # Starts a worker by calling: FatmanGo.Worker.start_link(arg)
