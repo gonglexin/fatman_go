@@ -12,7 +12,8 @@ config :fatman_go, FatmanGoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "NAIW5tIqn+r3ESIA6EBkTqOA743CRdcJ+d6V3TVqlEoXMYVMsxnpLaxHRV6fWvXL",
   render_errors: [view: FatmanGoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: FatmanGo.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub_server: FatmanGo.PubSub,
+  live_view: [signing_salt: "T3EMPTIBiTffatGFIe7Oza0mtOpVQ26Q"]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -1,5 +1,7 @@
 defmodule FatmanGoWeb.Router do
   use FatmanGoWeb, :router
+  import Plug.BasicAuth
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -19,6 +21,14 @@ defmodule FatmanGoWeb.Router do
     get "/", PageController, :index
   end
 
+  pipeline :admins_only do
+    plug :basic_auth, username: "admin", password: "admin"
+  end
+
+  scope "/" do
+    pipe_through [:browser, :admins_only]
+    live_dashboard "/dashboard", metrics: FatmanGoWeb.Telemetry    
+  end
   # Other scopes may use custom stacks.
   # scope "/api", FatmanGoWeb do
   #   pipe_through :api
