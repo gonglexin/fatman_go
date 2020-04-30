@@ -28,7 +28,7 @@ defmodule FatmanGo.MixProject do
   def application do
     [
       mod: {FatmanGo.Application, []},
-      extra_applications: [:logger, :runtime_tools, :observer_cli]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :observer_cli]
     ]
   end
 
@@ -45,7 +45,7 @@ defmodule FatmanGo.MixProject do
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_html, "~> 2.13"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.0"},
+      {:phoenix_live_dashboard, "~> 0.2.1"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
