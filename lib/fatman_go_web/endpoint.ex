@@ -1,5 +1,6 @@
 defmodule FatmanGoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :fatman_go
+  use Appsignal.Phoenix
 
   socket "/live", Phoenix.LiveView.Socket
   socket "/socket", FatmanGoWeb.UserSocket,

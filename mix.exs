@@ -51,7 +51,8 @@ defmodule FatmanGo.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.1"},
-      {:observer_cli, "~> 1.4"}
+      {:observer_cli, "~> 1.4"},
+      {:appsignal, "~> 1.0"}
     ]
   end
 end

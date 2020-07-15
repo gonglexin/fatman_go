@@ -17,6 +17,8 @@ export MIX_ENV=prod
 #export HEX_CDN=https://hexpm.upyun.com
 #export HEX_MIRROR=https://hexpm.upyun.com
 
+export APPSIGNAL_BUILD_FOR_MUSL=1
+mix deps.clean --all
 # Fetch deps and compile
 mix deps.get --only prod
 # Run an explicit clean to remove any build artifacts from the host
