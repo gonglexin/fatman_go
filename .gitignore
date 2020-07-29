@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/phoenix
 # Edit at https://www.gitignore.io/?templates=phoenix
 .DS_Store
+.editorconfig
 
 ### Phoenix ###
 /_build

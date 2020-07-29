@@ -27,10 +27,6 @@ defmodule FatmanGoWeb.Router do
 
   scope "/" do
     pipe_through [:browser, :admins_only]
-    live_dashboard "/dashboard", metrics: FatmanGoWeb.Telemetry    
+    live_dashboard "/dashboard", metrics: FatmanGoWeb.Telemetry
   end
-  # Other scopes may use custom stacks.
-  # scope "/api", FatmanGoWeb do
-  #   pipe_through :api
-  # end
 end

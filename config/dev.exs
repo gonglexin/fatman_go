@@ -11,7 +11,15 @@ config :fatman_go, FatmanGoWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: []
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
@@ -43,7 +51,7 @@ config :fatman_go, FatmanGoWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/fatman_go_web/{live,views}/.*(ex)$",
+      ~r"lib/fatman_go_web/{live|views}/.*(ex)$",
       ~r"lib/fatman_go_web/templates/.*(eex)$"
     ]
   ]

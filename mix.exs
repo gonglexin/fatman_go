@@ -4,20 +4,21 @@ defmodule FatmanGo.MixProject do
   def project do
     [
       app: :fatman_go,
-      version: "0.0.1",
-      elixir: "~> 1.5",
+      version: "0.1.0",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps(),
       releases: [
-	fatman_go: [
-	  include_executables_for: [:unix],
+        fatman_go: [
+          include_executables_for: [:unix],
           applications: [runtime_tools: :permanent],
-	  steps: [
-	    :assemble, :tar
-	  ]
-	]
+          steps: [
+            :assemble, :tar
+          ]
+        ]
       ]
     ]
   end
@@ -53,6 +54,18 @@ defmodule FatmanGo.MixProject do
       {:plug_cowboy, "~> 2.1"},
       {:observer_cli, "~> 1.4"},
       {:appsignal, "~> 1.0"}
+    ]
+  end
+
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to install project dependencies and perform other setup tasks, run:
+  #
+  #     $ mix setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
+    [
+      setup: ["deps.get", "cmd npm install --prefix assets"]
     ]
   end
 end

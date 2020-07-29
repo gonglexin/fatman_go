@@ -2,19 +2,19 @@ defmodule FatmanGo.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
-  
+
   use Application
 
   def start(_type, _args) do
-    # List all child processes to be supervised
     children = [
+      # Start the Telemetry supervisor
+      FatmanGoWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: FatmanGo.PubSub},
-      FatmanGoWeb.Telemetry,
-      # Start the endpoint when the application starts      
+      # Start the Endpoint (http/https)
       FatmanGoWeb.Endpoint
-      # Starts a worker by calling: FatmanGo.Worker.start_link(arg)
-      # {FatmanGo.Worker, arg},
+      # Start a worker by calling: FatmanGo.Worker.start_link(arg)
+      # {FatmanGo.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
