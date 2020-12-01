@@ -46,14 +46,14 @@ defmodule FatmanGo.MixProject do
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_html, "~> 2.13"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.3"},
+      {:phoenix_live_dashboard, "~> 0.4"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.1"},
       {:observer_cli, "~> 1.4"},
-      {:appsignal, "~> 1.0"}
+      {:appsignal_phoenix, "~> 2.0.0"}
     ]
   end
 

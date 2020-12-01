@@ -8,3 +8,6 @@ config :fatman_go, FatmanGoWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :appsignal, :config,
+  active: false
